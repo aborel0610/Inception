@@ -20,6 +20,7 @@
 - *images*: show all downloaded images
 - *run*: launch image
 - *ps*:show which containers are running
+- docker stop $(docker ps -qa); docker rm $(docker ps -qa); docker rmi -f $(docker images -qa); docker volume rm $(docker volume ls -q); docker network rm $(docker network ls -q) 2>/dev/null
 
 ## Port Binding
 
