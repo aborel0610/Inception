@@ -46,4 +46,4 @@
 		- stored in .crt file on Linux and .cer file on Windows
 	- Public key to encrypt and private key to decrypt
 	
-	
+- **FastCGI** (Common Gateway Interface): protocol that defines how the web server communicates with CGI program (PHP).
