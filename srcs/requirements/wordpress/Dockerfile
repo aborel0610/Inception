@@ -9,10 +9,8 @@ RUN cd /var/www && tar -xzf wordpress-7.0-fr_FR.tar.gz && rm wordpress-7.0-fr_FR
 RUN chown -R root:root /var/www/wordpress
 
 #PHP
+RUN apt-get install -y php php-cgi php-mysql
 RUN mkdir /run/php
-COPY ./tools/create_wordpress.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/create_wordpress.sh
-ENTRYPOINT ["/usr/local/bin/create_wordpress.sh"]
 
 WORKDIR /var/www/html/
 EXPOSE 9000
