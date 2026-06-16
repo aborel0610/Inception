@@ -15,4 +15,10 @@ RUN mkdir /run/php
 WORKDIR /var/www/html/
 EXPOSE 9000
 
+#CLI allows automatic configuration of web page (don't land on default WordPress homepage)
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
+COPY conf/auto_config.sh /etc/wordpress/autoconfig.sh
+
 CMD ["usr/sbin/php-fpm7.3", "-F"]
