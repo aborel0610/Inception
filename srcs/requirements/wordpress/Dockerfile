@@ -20,5 +20,6 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 COPY conf/auto_config.sh /etc/wordpress/autoconfig.sh
+ENTRYPOINT [ "/etc/wordpress/autoconfig.sh" ]
 
 CMD ["usr/sbin/php-fpm7.3", "-F"]
