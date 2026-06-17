@@ -48,3 +48,21 @@
 	- Public key to encrypt and private key to decrypt
 - **FastCGI** (Common Gateway Interface): protocol that defines how the web server communicates with CGI program (PHP).
 - **MariaDB**: relational database management system
+
+## Docker Volumes
+
+- Used to make data persistent
+- Container runs on host. If container is deleted then restarted --> no persistence
+- 3 types of volumes
+	- Host volumes: you decide where on the host file system you mount into the container
+	- Anonymous volumes: don't specify which directory on the host should be mounted, automatically decided by docker
+	- Named volumes: anonymous volumes but you specify the name of the folder on the host file system
+- Bind mounts: binds a directory from container to directory from host
+	- volumes are easier to back up or migrate, are more safely shared between containers, don't have to be on host, can be anywhere (external storage), high performance I/O
+	- dependent on dir structure and OS of host machine, while volumes are completely managed by Docker
+	- better than volumes if you need to access files or directories from both containers and the host
+
+## Docker Secrets
+
+- Used to manage sensitive data. Encrypted during transit, stroed in Docker swarm. Only accessible to services which have been granted explit access to it, and only while those services are running
+- Swarm = cluster of Docker Engines

@@ -5,4 +5,5 @@ wp config create --allow-root \
 	--dbpass=$SQL_PASSWORD \
 	--dbhost=mariadb:3306 --path='/var/www/wordpress'
 
-wp core install --title="Welcome to Inception"
+wp user create $SQL_USER $SQL_EMAIL --role=administrator
+
