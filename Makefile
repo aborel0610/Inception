@@ -1,6 +1,26 @@
+all: up
+
+up:
+	@mkdir -p /home/aborel/data/mariadb
+	@mkdir -p /home/aborel/data/wordpress
+	@docker-compose up --build
+
+down:
+	@docker-compose down
+
+re: down up
+
+clean: down
+	@docker-compose down --volumes
+	@rm -rf /home/aborel/data/mariadb
+	@rm -rf /home/aborel/data/wordpress
+
+fclean : clean
+	@docker system prun -af
 
 env:
 	@cp .env.template .env
 	@echo "\033[0;31mREMEMBER TO SET UP PASSWORDS\033[0m\n"
 
+.PHONY: all up down re clean fclean env
 
