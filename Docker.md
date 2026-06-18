@@ -70,3 +70,4 @@
 ## Docker Compose
 - Allows easy setup of containers. Someone on another machine only needs to do "docker compose up" and all containers are created exactly the way they were created on yours
 - https://blog.stephane-robert.info/docs/conteneurs/orchestrateurs/docker-compose/
+- https://docs.docker.com/reference/compose-file/services/
