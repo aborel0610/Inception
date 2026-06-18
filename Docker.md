@@ -66,3 +66,7 @@
 
 - Used to manage sensitive data. Encrypted during transit, stroed in Docker swarm. Only accessible to services which have been granted explit access to it, and only while those services are running
 - Swarm = cluster of Docker Engines
+
+## Docker Compose
+- Allows easy setup of containers. Someone on another machine only needs to do "docker compose up" and all containers are created exactly the way they were created on yours
+- https://blog.stephane-robert.info/docs/conteneurs/orchestrateurs/docker-compose/
