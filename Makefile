@@ -3,7 +3,7 @@ all: up
 up:
 	@mkdir -p /home/aborel/data/mariadb
 	@mkdir -p /home/aborel/data/wordpress
-	@docker-compose up --build
+	@docker-compose -f ./srcs/docker-compose.yml up --build 
 
 down:
 	@docker-compose down
@@ -11,7 +11,7 @@ down:
 re: down up
 
 clean: down
-	@docker-compose down --volumes
+	@docker-compose -f ./srcs/docker-compose.yml down --volumes 
 	@rm -rf /home/aborel/data/mariadb
 	@rm -rf /home/aborel/data/wordpress
 
@@ -19,7 +19,7 @@ fclean : clean
 	@docker system prun -af
 
 env:
-	@cp .env.template .env
+	@cp .env.template ./srcs/.env
 	@echo "\033[0;31mREMEMBER TO SET UP PASSWORDS\033[0m\n"
 
 .PHONY: all up down re clean fclean env
