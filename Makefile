@@ -6,12 +6,12 @@ up:
 	@docker-compose -f ./srcs/docker-compose.yml up --build 
 
 down:
-	@docker-compose down
+	@docker-compose -f ./srcs/docker-compose.yml down
 
 re: down up
 
 clean: down
-	@docker-compose -f ./srcs/docker-compose.yml down --volumes 
+	@docker-compose down --volumes 
 	@rm -rf /home/aborel/data/mariadb
 	@rm -rf /home/aborel/data/wordpress
 
