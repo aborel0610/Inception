@@ -2,7 +2,7 @@ FROM debian:bookworm
 
 RUN apt update -y
 RUN apt upgrade -y
-RUN apt-get install -y php7.3 php-fpm php-mysql mariadb-client wget
+RUN apt-get install -y php8.2 php8.2-fpm php8.2-mysql mariadb-client wget
 
 #Install WordPress
 RUN wget https://fr.wordpress.org/wordpress-7.0-fr_FR.tar.gz -P /var/www
