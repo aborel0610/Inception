@@ -17,7 +17,7 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 COPY conf/auto_config.sh /auto_config.sh
 RUN chmod +x /auto_config.sh
 
-WORKDIR /var/www/html
+WORKDIR /var/www/wordpress
 
 EXPOSE 9000
 

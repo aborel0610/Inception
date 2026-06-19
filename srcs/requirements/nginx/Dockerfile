@@ -1,7 +1,7 @@
 FROM debian:bookworm
 
 RUN apt update
-RUN apt install nginx -y
+RUN apt install nginx netcat-openbsd -y
 
 #Install TLS
 RUN mkdir -p /etc/nginx/tls
@@ -12,10 +12,14 @@ RUN openssl req -newkey rsa:2048  -x509 -sha256 -nodes \
 	-subj="/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=aborel.42.fr/UID=aborel"
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY tools/wordpress_wait.sh /wordpress_wait.sh
+RUN chmod +x /wordpress_wait.sh
 
 #Put config files in /var
 RUN mkdir -p /var/run/nginx
 
 EXPOSE 443
+
+ENTRYPOINT [ "/wordpress_wait.sh" ]
 
 CMD [ "nginx", "-g", "daemon off;" ]

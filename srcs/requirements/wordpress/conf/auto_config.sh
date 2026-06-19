@@ -1,4 +1,9 @@
-sleep 10
+
+#Wait for MariaDB
+until mysqladmin ping --silent; do
+    echo "Waiting for MariaDB..."
+    sleep 1
+done
 
 #if WordPress isn't already set up then
 if [ ! -f /var/www/wordpress/wp-config.php ]; then
