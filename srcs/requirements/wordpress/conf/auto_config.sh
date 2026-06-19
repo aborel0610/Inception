@@ -1,16 +1,13 @@
 #!/bin/bash
 
 #Wait for MariaDB
-until mysqladmin ping --silent; do
-    echo "Waiting for MariaDB..."
-    sleep 1
-done
+sleep 10
 
 #if WordPress isn't already set up then
 if [ ! -f /var/www/wordpress/wp-config.php ]; then
 	#writes wp-config.php
 	wp config create --allow-root \
-		--db_name=$SQL_DATABASE \
+		--dbname=$SQL_DATABASE \
 		--dbuser=$SQL_USER \
 		--dbpass=$SQL_PASSWORD \
 		--dbhost=mariadb:3306 \
