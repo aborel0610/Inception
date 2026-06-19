@@ -1,3 +1,4 @@
+#!/bin/bash
 
 #Wait for MariaDB
 until mysqladmin ping --silent; do
@@ -28,7 +29,7 @@ if [ ! -f /var/www/wordpress/wp-config.php ]; then
 	wp user create --allow-root \
 		$WP_USER $WP_USER_EMAIL \
 		--role=subscriber \
-		user_pass=$WP_USER_PASS \
+		--user_pass=$WP_USER_PASS \
 		--path=/var/www/wordpress
 fi
 
