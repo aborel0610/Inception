@@ -1,4 +1,4 @@
-FROM debian:trixie
+FROM debian:bookworm
 
 RUN apt update
 RUN apt install nginx -y
@@ -15,8 +15,5 @@ RUN openssl req -newkey rsa:2048  -x509 -sha256 -nodes \
 RUN mkdir -p /var/run/nginx
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
-
-RUN chmod 755 /var/www/wordpress
-RUN chown -R www-data:www-data /var/www/wordpress
 
 CMD [ "nginx", "-g", "daemon off;" ]
