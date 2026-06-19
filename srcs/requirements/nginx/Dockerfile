@@ -11,9 +11,11 @@ RUN openssl req -newkey rsa:2048  -x509 -sha256 -nodes \
 	-keyout /etc/nginx/tls/inception.key \
 	-subj="/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=aborel.42.fr/UID=aborel"
 
+COPY conf/nginx.conf /etc/nginx/nginx.conf
+
 #Put config files in /var
 RUN mkdir -p /var/run/nginx
 
-COPY conf/nginx.conf /etc/nginx/nginx.conf
+EXPOSE 443
 
 CMD [ "nginx", "-g", "daemon off;" ]
