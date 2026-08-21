@@ -5,3 +5,5 @@ until nc -z wordpress 9000; do
     echo "Waiting for wordpress..."
     sleep 1
 done
+
+exec "$@"
