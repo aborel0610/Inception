@@ -11,12 +11,12 @@ down:
 re: down up
 
 clean: down
-	@docker-compose down --volumes 
-	@rm -rf /home/aborel/data/mariadb
-	@rm -rf /home/aborel/data/wordpress
+	@docker-compose -f ./srcs/docker-compose.yml down --volumes 
+	@sudo rm -rf /home/aborel/data/mariadb
+	@sudo rm -rf /home/aborel/data/wordpress
 
 fclean : clean
-	@docker system prun -af
+	@docker system prune -af
 
 env:
 	@cp .env.template ./srcs/.env

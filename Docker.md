@@ -64,7 +64,7 @@
 
 ## Docker Secrets
 
-- Used to manage sensitive data. Encrypted during transit, stroed in Docker swarm. Only accessible to services which have been granted explit access to it, and only while those services are running
+- Used to manage sensitive data. Encrypted during transit, stored in Docker swarm. Only accessible to services which have been granted explit access to it, and only while those services are running
 - Swarm = cluster of Docker Engines
 
 ## Docker Compose

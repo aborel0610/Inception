@@ -10,7 +10,7 @@ if [ ! -f /var/www/wordpress/wp-config.php ]; then
 		--dbname=$SQL_DATABASE \
 		--dbuser=$SQL_USER \
 		--dbpass=$SQL_PASSWORD \
-		--dbhost=mariadb:3306 \
+		--dbhost=mariadb \
 		--path=/var/www/wordpress
 	
 	#does the WordPress installation and sets up admin
@@ -19,7 +19,7 @@ if [ ! -f /var/www/wordpress/wp-config.php ]; then
 		--title="My Site" \
 		--admin_user=$WP_ADMIN \
 		--admin_password=$WP_ADMIN_PASS \
-		--admin-email=$WP_ADMIN_EMAIL \
+		--admin_email=$WP_ADMIN_EMAIL \
 		--path=/var/www/wordpress
 
 	#creates additional user
