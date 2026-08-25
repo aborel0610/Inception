@@ -29,11 +29,6 @@ if [ ! -f /var/www/wordpress/wp-config.php ]; then
 		--user_pass=$WP_USER_PASS \
 		--path=/var/www/wordpress
 	
-	wp theme install /twentytwentyfour.zip --activate --allow-root
-	wp option update blogname "Austin's Inception Site" --allow-root
-	wp option update blogdescription "42 School Project" --allow-root
-	# wp theme activate oceanwp --allow-root
-	wp post create /post.txt --post_type=post --post_title='A website made with Docker containers' --post_status=publish --allow-root
 fi
 
 exec php-fpm8.2 -F

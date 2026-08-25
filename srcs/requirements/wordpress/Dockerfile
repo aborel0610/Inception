@@ -16,8 +16,6 @@ RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
 COPY tools/auto_config.sh /auto_config.sh
-COPY tools/post.txt /post.txt
-COPY tools/twentytwentyfour.zip /twentytwentyfour.zip
 RUN chmod +x /auto_config.sh
 
 WORKDIR /var/www/wordpress
