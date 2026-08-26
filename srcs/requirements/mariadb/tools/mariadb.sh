@@ -10,7 +10,7 @@ until mysqladmin ping --silent 2>/dev/null; do
     sleep 1
 done
 
-if [ -d "/var/lib/mysql/$MYSQL_DATABASE" ]
+if [ -d "/var/lib/mysql/$SQL_DATABASE" ]
 then 
 
 	echo "Database already exists"

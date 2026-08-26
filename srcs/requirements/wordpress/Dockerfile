@@ -6,8 +6,8 @@ RUN apt-get install -y php8.2 php8.2-fpm php8.2-mysql mariadb-client wget
 RUN sed -i 's|^listen = .*|listen = 9000|' /etc/php/8.2/fpm/pool.d/www.conf
 
 #Install WordPress
-RUN wget https://fr.wordpress.org/wordpress-7.0-fr_FR.tar.gz -P /var/www
-RUN cd /var/www && tar -xzf wordpress-7.0-fr_FR.tar.gz && rm wordpress-7.0-fr_FR.tar.gz
+RUN wget https://fr.wordpress.org/wordpress-7.1-fr_FR.tar.gz -P /var/www
+RUN cd /var/www && tar -xzf wordpress-7.1-fr_FR.tar.gz && rm wordpress-7.1-fr_FR.tar.gz
 RUN chown -R root:root /var/www/wordpress
 
 #CLI allows automatic configuration of web page (don't land on default WordPress homepage)

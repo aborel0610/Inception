@@ -3,7 +3,7 @@ all: up
 up:
 	@mkdir -p /home/aborel/data/mariadb
 	@mkdir -p /home/aborel/data/wordpress
-	@docker-compose -f ./srcs/docker-compose.yml up --build 
+	@docker-compose -f ./srcs/docker-compose.yml up --build -d
 
 down:
 	@docker-compose -f ./srcs/docker-compose.yml down --volumes
@@ -11,9 +11,7 @@ down:
 re: down up
 
 clean: down
-	@docker-compose -f ./srcs/docker-compose.yml down --volumes 
-	@sudo rm -rf /home/aborel/data/mariadb
-	@sudo rm -rf /home/aborel/data/wordpress
+	@docker-compose -f ./srcs/docker-compose.yml down --volumes
 
 fclean : clean
 	@docker system prune -af
