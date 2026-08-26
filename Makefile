@@ -7,15 +7,12 @@ up:
 
 down:
 	@docker-compose -f ./srcs/docker-compose.yml down --volumes
-
 re: down up
 
 clean: down
-	@docker-compose -f ./srcs/docker-compose.yml down --volumes
-
-fclean : clean
 	@docker system prune -af
-
+	sudo rm -rf /home/aborel/data/wordpress/* /home/aborel/data/mariadb/*
+	
 env:
 	@cp .env.template ./srcs/.env
 	@echo "\033[0;31mREMEMBER TO SET UP PASSWORDS\033[0m\n"

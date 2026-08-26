@@ -26,6 +26,9 @@
 
 - Container runs on a port. Need to bind port to localhost so you can access it
 - **docker run -d -p *local_port*:*container_port* *image***
+- Changing ports:
+	- MariaDB: don't forget to change auto_config.sh: --dbhost
+	- Nginx: don't forget to change DOMAIN_NAME in .env
 
 ## Docker Compose
 - Helps define and share multi-container apps
