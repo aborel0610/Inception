@@ -6,9 +6,7 @@ up:
 	@docker-compose -f ./srcs/docker-compose.yml up --build 
 
 down:
-	@docker-compose -f ./srcs/docker-compose.yml down --volumes 
-	@sudo rm -rf /home/aborel/data/mariadb
-	@sudo rm -rf /home/aborel/data/wordpress
+	@docker-compose -f ./srcs/docker-compose.yml down --volumes
 
 re: down up
 

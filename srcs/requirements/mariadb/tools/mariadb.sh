@@ -10,6 +10,11 @@ until mysqladmin ping --silent 2>/dev/null; do
     sleep 1
 done
 
+if [ -d "/var/lib/mysql/$MYSQL_DATABASE" ]
+then 
+
+	echo "Database already exists"
+else
 # Run setup queries (root has no password yet at this point)
 mysql -e "CREATE DATABASE IF NOT EXISTS ${SQL_DATABASE};"
 mysql -e "CREATE USER IF NOT EXISTS '${SQL_USER}'@'%' IDENTIFIED BY '${SQL_PASSWORD}';"
@@ -20,6 +25,7 @@ mysql -e "SELECT user, host FROM mysql.user;"
 # Shutdown using the root password we just set
 kill $MYSQL_PID
 wait $MYSQL_PID
+fi
 
 # Hand off to CMD (mysqld in foreground as PID 1)
 exec "$@"
