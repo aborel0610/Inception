@@ -5,7 +5,7 @@ sleep 10
 
 #if WordPress isn't already set up then
 if [ ! -f /var/www/wordpress/wp-config.php ]; then
-	SLQ_PASSWORD=$(cat /run/secrets/sql_password)
+	SQL_PASSWORD=$(cat /run/secrets/sql_password)
 	#writes wp-config.php
 	wp config create --allow-root \
 		--dbname=$SQL_DATABASE \

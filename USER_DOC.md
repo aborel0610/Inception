@@ -31,3 +31,9 @@ NEVER PUSH SECRETS TO GIT OR ANYONE WILL BE ABLE TO SIGN IN WITH YOUR PASSWORD.
 Use command ``` docker ps ``` to see containers and ``` docker images ``` to see images.
 ``` docker logs <container_name> ``` will show you the logs for this specific service.
 
+	- To check the website is up and has the correct TLS certificate:
+	```
+	curl -v https://localhost:443
+	curl -v https://aborel.42.fr
+	```
+	You can also go to https://aborel.42.fr. A "Connection not Secured" page will show up. This is because the certificate is self-signed, meaning the person who delivered it (me) is also the person who signed it (also me) and the Certificate Authority hasn't checked it. This is normal. Click on the padlock >> Connection not secured >> More Information >> View Information to see the TLS details.

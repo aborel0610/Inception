@@ -14,7 +14,7 @@ services:
       - inception
     secrets:
       - sql_password
-      - sq_root_password
+      - sql_root_password
   wordpress:
     container_name: wordpress
     image: wordpress:42
@@ -34,6 +34,7 @@ services:
       - wp_admin_pass
       - wp_user_pass
       - sql_password
+      - sql_root_password
   nginx:
     container_name: nginx
     image: nginx:42
