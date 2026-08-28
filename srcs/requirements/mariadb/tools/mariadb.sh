@@ -12,10 +12,11 @@ done
 
 if [ -d "/var/lib/mysql/$SQL_DATABASE" ]
 then 
-
 	echo "Database already exists"
 else
 # Run setup queries (root has no password yet at this point)
+SQL_PASSWORD=$(cat /run/secrets/sql_password)
+SQL_PASSWORD=$(cat /run/secrets/sql_root_password)
 mysql -e "CREATE DATABASE IF NOT EXISTS ${SQL_DATABASE};"
 mysql -e "CREATE USER IF NOT EXISTS '${SQL_USER}'@'%' IDENTIFIED BY '${SQL_PASSWORD}';"
 mysql -e "GRANT ALL PRIVILEGES ON ${SQL_DATABASE}.* TO '${SQL_USER}'@'%';"

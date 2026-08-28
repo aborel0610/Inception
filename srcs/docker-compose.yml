@@ -12,6 +12,9 @@ services:
     restart: unless-stopped
     networks:
       - inception
+    secrets:
+      - sql_password
+      - sq_root_password
   wordpress:
     container_name: wordpress
     image: wordpress:42
@@ -27,6 +30,10 @@ services:
       - mariadb
     networks:
       - inception
+    secrets:
+      - wp_admin_pass
+      - wp_user_pass
+      - sql_password
   nginx:
     container_name: nginx
     image: nginx:42
@@ -62,4 +69,14 @@ volumes:
 networks:
   inception:
     driver: bridge
+
+secrets:
+  wp_admin_pass:
+    file: ./secrets/wp_admin_pass.txt
+  sql_password:
+    file: ./secrets/sql_password.txt
+  sql_root_password:
+    file: ./secrets/sql_root_password.txt
+  wp_user_pass:
+    file: ./secrets/wp_user_pass.txt
     
