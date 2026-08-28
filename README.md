@@ -3,10 +3,15 @@
 # Description
 The goal of this project is to set up a small infrastructure composed of different services under specific rules using Docker. It creates a WordPress website at https://aborel.42.fr.
 
+Docker is a virtualisation software that makes developing and deploying application much easier. It packages app w/ all necessary dependencies, configuration, system tools and runtime into a **container**, making it easy to share and distribute.
+Thanks to Docker, you no longer need to install and configure all services directly on local machine. Depending on the OS the installation process for an app can be different and many things can go wrong.
+Software is packaged in containers. A container is a runtime environment with all the necessary component (code, dependencies, libraries) needed to run the application code without using the host machine dependencies. These containers can be run on any machine or virtual machine where Docker is installed.
+A Docker **image** is a standalone, executable file used to create a container. It contains all the libraries, dependencies, and files that the container needs to run. Multiple containers can be made from one image. Ready made images called Docker registries are available on DockerHub (these were not used here as that would defeat the point of this project).
+
 # Instructions
 1. Launch the virtual machine Inception on Oracle VirtualBox. This machine runs Debian 12 Bookworm - the penultimate stable version of Debian - in all the default settings.
 
-2. Run ``` make env ```. For security reasons, no passwords are shared on git. You must therefore build the environment yourself and enter the required passwords at the bottom of the env.
+2. Run ``` make secrets ```. For security reasons, no passwords are shared on git. You must therefore build the secrets folder and enter the passwords you want in the corresponding txt files.
 
 3. Run ``` make ``` and go to https://aborel.42.fr (the website may take a minute to be accessible). 
 
@@ -17,6 +22,7 @@ The goal of this project is to set up a small infrastructure composed of differe
 RTFM: https://docs.docker.com/get-started/
 Tutoriel Docker (in French): https://blog.stephane-robert.info/docs/conteneurs/moteurs-conteneurs/docker/
 Docker Tutorials for Beginners: https://www.youtube.com/watch?v=3c-iBn73dDE
+Difference between Docker Images and Containers: https://aws.amazon.com/compare/the-difference-between-docker-images-and-containers/
 
 
 OpenSSL Essentials: https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs#introduction
@@ -44,3 +50,14 @@ The bridge network is the default network of Docker. It is a virtual private net
 When using the host network mode, the container's network stack isn't isolated from the Docker host. The container doesn't get its own IP address allocated, it is available via localhost:port_number, with no port publishing possible.
 
 ## Docker Volumes vs Bind Mounts
+
+Volumes and bind mounts are used for data persistence. That way, you can turn off your machine and your data will not be deleted.
+Bind mounts are dependent on the directory structure and OS of the host machine, while volumes are managed by Docker.
+Volume pros:
+	- easier to back up, migrate, share between containers
+	- can be managed using Docker CLI commands or Docker API
+	- work on both Linux and Windows containers
+	- high performance I/O
+Bind Mount pros:
+	- can access files from the host (volumes completely managed by Docker)
+Volumes can be named or anonymous. Anonymous volumes are given a random name
