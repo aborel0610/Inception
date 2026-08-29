@@ -20,8 +20,7 @@ re: down up
 
 clean: down
 	@docker system prune -af
-	@docker run --rm -v /home/aborel/data:/data alpine sh -c "rm -rf /data/wordpress/* /data/mariadb/*"
-# 	sudo rm -rf /home/aborel/data/wordpress/* /home/aborel/data/mariadb/*
+	@sudo rm -rf /home/aborel/data/wordpress/* /home/aborel/data/mariadb/*
 	
 secrets:
 	@mkdir -p ./srcs/secrets

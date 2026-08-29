@@ -37,3 +37,5 @@ Use command ``` docker ps ``` to see containers and ``` docker images ``` to see
 	curl -v https://aborel.42.fr
 	```
 	You can also go to https://aborel.42.fr. A "Connection not Secured" page will show up. This is because the certificate is self-signed, meaning the person who delivered it (me) is also the person who signed it (also me) and the Certificate Authority hasn't checked it. This is normal. Click on the padlock >> Connection not secured >> More Information >> View Information to see the TLS details.
+
+To check the volumes, run ``` docker volume ls ```. To see details, run ``` docker volume inspect <container_name> ```.
