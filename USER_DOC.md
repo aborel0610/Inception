@@ -39,3 +39,19 @@ Use command ``` docker ps ``` to see containers and ``` docker images ``` to see
 	You can also go to https://aborel.42.fr. A "Connection not Secured" page will show up. This is because the certificate is self-signed, meaning the person who delivered it (me) is also the person who signed it (also me) and the Certificate Authority hasn't checked it. This is normal. Click on the padlock >> Connection not secured >> More Information >> View Information to see the TLS details.
 
 To check the volumes, run ``` docker volume ls ```. To see details, run ``` docker volume inspect <container_name> ```.
+
+To check the network, run ``` docker network ls```.
+
+To check the website is only accessible through https, run ``` curl -v http://localhost:80 ``` or ``` curl -v http://aborel.42.fr ```. Firefox automatically changes http to https, so checking directly on Firefox is not possible.
+
+To log in to the MariaDB database, run ``` docker exec -it <mariadb_container_name> mysql -u root -p ```. After that, run:
+
+```
+USE Inception;
+SHOW TABLES;
+
+```
+To print a table, run ``` SELECT * FROM table_name; ```
+
+To change the prot of:
+	- nginx: check docker-compose.yml, Dockerfile, nginx.conf, add port number to domain name in .env

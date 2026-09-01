@@ -9,12 +9,12 @@ check-secrets:
 	fi
 
 up: check-secrets
-	@mkdir -p /home/aborel/data/mariadb
-	@mkdir -p /home/aborel/data/wordpress
-	@docker-compose -f ./srcs/docker-compose.yml up --build -d
+	@sudo mkdir -p /home/aborel/data/mariadb
+	@sudo mkdir -p /home/aborel/data/wordpress
+	@docker compose -f ./srcs/docker-compose.yml up --build -d
 
 down:
-	@docker-compose -f ./srcs/docker-compose.yml down --volumes
+	@docker compose -f ./srcs/docker-compose.yml down --volumes
 
 re: down up
 
