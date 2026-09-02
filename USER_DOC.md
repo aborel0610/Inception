@@ -28,6 +28,8 @@ NEVER PUSH SECRETS TO GIT OR ANYONE WILL BE ABLE TO SIGN IN WITH YOUR PASSWORD.
 
 ## Checking that Services are Running Correctly
 
+Run ``` docker stop $(docker ps -qa); docker rm $(docker ps -qa); docker rmi -f $(docker images -qa); docker volume rm $(docker volume ls -q); docker network rm $(docker network ls -q) 2>/dev/null ``` to delete all containers and images on machine.
+
 Use command ``` docker ps ``` to see containers and ``` docker images ``` to see images.
 ``` docker logs <container_name> ``` will show you the logs for this specific service.
 
@@ -53,5 +55,7 @@ SHOW TABLES;
 ```
 To print a table, run ``` SELECT * FROM table_name; ```
 
-To change the prot of:
+To change the port of:
 	- nginx: check docker-compose.yml, Dockerfile, nginx.conf, add port number to domain name in .env
+	- mariadb: check docker-compose.yml, 50-server.cnf, Dockerfile, auto_config.sh
+	- wordpress: nginx.conf, wordpress_wait.sh, Dockerfile, docker-compose.yml
